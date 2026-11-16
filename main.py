@@ -122,6 +122,11 @@ def run(args):
     try:
         from playwright.sync_api import sync_playwright, Error as PlaywrightError
     except ImportError:
+        venv_py = ROOT / '.venv' / ('Scripts/python.exe' if sys.platform == 'win32' else 'bin/python')
+        if venv_py.exists() and Path(sys.executable).resolve() != venv_py.resolve():
+            import subprocess
+            print(f'Playwright não está neste Python; usando {venv_py}', flush=True)
+            sys.exit(subprocess.call([str(venv_py), str(Path(__file__).resolve()), *sys.argv[1:]]))
         sys.exit('Playwright não instalado. Rode: pip install -r requirements.txt')
 
     if not (EXT / 'models' / 'ducks_web_model' / 'model.json').exists():
