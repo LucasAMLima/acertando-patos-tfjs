@@ -1,0 +1,26 @@
+# Ambiente Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Clone do ultralytics/yolov5 (licença AGPL-3.0): baixe com git clone, veja o README
+training/yolov5/
+
+# Arquivos do jogo baixados por training/download_assets.py (arte de terceiros)
+training/assets/
+
+# Saídas de treino / dataset / testes
+datasets/
+runs/
+*.pt
+test/out/
+
+# Node (caso use ferramentas JS)
+node_modules/
+
+# SO / editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Duck Challenge - YOLOv5 + TF.js",
+  "version": "1.0.0",
+  "description": "Detecta os patos com YOLOv5n (TensorFlow.js) e clica neles automaticamente.",
+  "content_scripts": [
+    {
+      "matches": ["https://cdn.games.jogos123.net/html5/duck-challenge/*"],
+      "js": ["src/preserve-canvas.js"],
+      "run_at": "document_start",
+      "all_frames": true,
+      "world": "MAIN"
+    },
+    {
+      "matches": ["https://cdn.games.jogos123.net/html5/duck-challenge/*"],
+      "js": ["lib/tf.min.js", "src/duck-bot.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["models/ducks_web_model/*"],
+      "matches": ["https://cdn.games.jogos123.net/*"]
+    }
+  ]
+}
